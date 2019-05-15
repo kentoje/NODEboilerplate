@@ -47,7 +47,6 @@ Définition du CRUD
           }
         } )
 
-        res.json({ msg: 'Create Article', data: req.body })
       } else {
         res.json({ msg: 'No data', data: null })
       }
@@ -56,12 +55,31 @@ Définition du CRUD
   })
   // Read all item : GET
   router.get('/article', (req, res) => {
-    res.json({ msg: 'Read all Article' })
+    // Récupérer des données SQL
+    connection.query('SELECT * FROM post', (error, results, fields) => {
+      if (error) {
+          res.json({ msg: 'Error get all', err: error })
+      }
+      else {
+          res.json({ msg: 'Get ALL', data: results })
+      }
+    });
   })
 
   // Read one item : GET
   router.get('/article/:id', (req, res) => {
-    res.json({ msg: 'Read one Article' })
+    // Récupérer le paramêtre d'une route
+    const routeParam = req.params.id;
+
+    // Récupérer des données SQL
+    connection.query(`SELECT * FROM post WHERE _id = ${routeParam}`, (error, results, fields) => {
+        if (error) {
+            res.json({ msg: 'Error get one', err: error })
+        }
+        else{
+            res.json({ msg: 'Get One', data: results })
+        }
+    });
   })
 
   // Update : PUT
