@@ -11,26 +11,42 @@ Définition du CRUD
 
   // Create item: POST
   router.post('/article', (req, res) => {
-      res.json({ msg: 'Create Article' })
+
+    /* 
+      Pour créer un article il faut une valeur pour :
+      - title
+      - content
+    */
+
+
+    res.json({ msg: 'Create Article' })
   })
   // Read all item : GET
   router.get('/article', (req, res) => {
-      res.json({ msg: 'Read all Article' })
+    res.json({ msg: 'Read all Article' })
   })
 
   // Read one item : GET
   router.get('/article/:id', (req, res) => {
-      res.json({ msg: 'Read one Article' })
+    res.json({ msg: 'Read one Article' })
   })
 
   // Update : PUT
   router.put('/article/:id', (req, res) => {
-      res.json({ msg: 'Update one Article' })
+
+    /* 
+      Pour créer un article il faut une valeur pour :
+      - title
+      - content
+    */
+
+    
+    res.json({ msg: 'Update one Article' })
   })
 
   // Delete one item : DELETE
   router.delete('/article/:id', (req, res) => {
-      res.json({ msg: 'Delete one Article' })
+    res.json({ msg: 'Delete one Article' })
   })
 //
 
